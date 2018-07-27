@@ -1,11 +1,15 @@
+function deleteNode(n) {
+    n.parentNode.removeChild(n);   
+}
+
 function removeRecycledTweets() {
     console.log("unrecycling!");
     var recycledTweets = document.querySelectorAll('div[data-component-context="suggest_recycled_tweet_inline"');
-
-    // delete all recycled tweets
-    recycledTweets.forEach(function (tweet) {
-        tweet.parentNode.removeChild(tweet);
-    });
+    var recapBlocks = document.querySelectorAll('div[data-component-context="suggest_recycled_tweet"]');
+    
+    // delete all recycled tweets and recap blocks
+    recycledTweets.forEach(deleteNode);
+    recapBlocks.forEach(deleteNode);
 }
 
 // Run when app starts
