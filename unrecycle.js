@@ -14,13 +14,11 @@ function removeRecycledTweets() {
 
 // Hook to timeline updates
 var timeline = document.getElementById("timeline");
-if (!timeline) {
-    return;
+if (timeline) {
+    var tlConfig = { attributes: false, childList: true, subtree: true };
+    var observer = new MutationObserver(removeRecycledTweets);
+    observer.observe(timeline, tlConfig);
+
+    // Run when app starts
+    document.addEventListener("DOMContentLoaded", removeRecycledTweets, false);
 }
-
-var tlConfig = { attributes: false, childList: true, subtree: true };
-var observer = new MutationObserver(removeRecycledTweets);
-observer.observe(timeline, tlConfig);
-
-// Run when app starts
-document.addEventListener("DOMContentLoaded", removeRecycledTweets, false);
