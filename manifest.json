@@ -1,0 +1,10 @@
+{
+    "name": "Twitter Unrecycler",
+    "version": "0.1",
+    "description": "Remove other users' faves from your timeline.",
+    "content_scripts": [{
+        "matches" : ["http://*.twitter.com/*", "https://*.twitter.com/*"],
+        "js" : ["unrecycle.js"]
+    }],
+    "manifest_version": 2
+}
