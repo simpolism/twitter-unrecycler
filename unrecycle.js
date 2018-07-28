@@ -4,14 +4,16 @@ function deleteNode(n) {
 
 function removeRecycledTweets() {
     console.log("unrecycling!");
-    var recycledTweets = document.querySelectorAll('div[data-component-context="suggest_recycled_tweet_inline"');
+    var recycledTweets = document.querySelectorAll('div[data-component-context="suggest_recycled_tweet_inline"]');
     var recapBlocks = document.querySelectorAll('div[data-component-context="suggest_recycled_tweet"]');
-    var activityBlocks = document.querySelectorAll('div[data-componetn-context="suggest_activity_tweet"]')
+    var activityBlocks = document.querySelectorAll('div[data-component-context="suggest_activity_tweet"]');
+    var promotedBlocks = document.querySelectorAll('div[data-promoted="true"]');
 
     // delete all recycled tweets and recap blocks
     recycledTweets.forEach(deleteNode);
     recapBlocks.forEach(deleteNode);
     activityBlocks.forEach(deleteNode);
+    promotedBlocks.forEach(deleteNode);
 }
 
 // Hook to timeline updates
