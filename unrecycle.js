@@ -16,13 +16,18 @@ function removeRecycledTweets() {
     promotedBlocks.forEach(deleteNode);
 }
 
+function scheduleRemoval() {
+    // wait 200 ms to guarantee all page elements have loaded
+    setTimeout(removeRecycledTweets, 200);
+}
+
 // Hook to timeline updates
 var timeline = document.getElementById("timeline");
 if (timeline) {
     var tlConfig = { attributes: false, childList: true, subtree: true };
-    var observer = new MutationObserver(removeRecycledTweets);
+    var observer = new MutationObserver(scheduleRemoval);
     observer.observe(timeline, tlConfig);
 
     // Run when app starts
-    document.addEventListener("DOMContentLoaded", removeRecycledTweets, false);
+    window.attachEvent('onload', scheduleRemoval);
 }
